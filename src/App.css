@@ -13,7 +13,23 @@ header {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
+img {
+  object-fit: scale-down;
+  width: 100%;
+  height: 100%;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #fff0c7;
+}
+
 /* typography */
+
+h1 {
+  font-family: 'Playfair Display SC', serif;
+  text-align: center;
+  font-size: 64px;
+}
 
 html {
   font-family: 'helvetica neue', sans-serif;
@@ -55,6 +71,19 @@ table {
 }
 
 /* Column Size for thead */
+.head {
+  width: 10%
+}
 
+.head th:nth-child(n+4):nth-child(-n+5) {
+  width: 30%
+}
 
 /* Column size for tbody */
+.body {
+  width: 10%
+}
+
+.body td:nth-child(n+4):nth-child(-n+5) {
+  width: 30%
+}

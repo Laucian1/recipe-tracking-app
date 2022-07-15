@@ -6,7 +6,7 @@ function RecipeList({ recipes, deleteRecipe }) {
   return (
     <div className="recipe-list">
       <table>
-        <thead>
+        <thead className="head">
           <tr>
             <th>Name</th>
             <th>Cuisine</th>
@@ -16,7 +16,7 @@ function RecipeList({ recipes, deleteRecipe }) {
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="body">
           {recipes.map((recipe, index) => (
             <RecipeView
               deleteRecipe={() => deleteRecipe(index)}
