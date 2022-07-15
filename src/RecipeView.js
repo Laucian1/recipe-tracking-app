@@ -1,6 +1,7 @@
 import React from "react"
 
 function RecipeView({ recipe, deleteRecipe }) {
+    //structure for each recipe row
     return (
         <tr>
             <td>{recipe.name}</td>

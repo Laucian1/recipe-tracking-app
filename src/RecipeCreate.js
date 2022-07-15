@@ -1,31 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 
 function RecipeCreate({ createRecipe }) {
-  const initialFormState = {
-    name: "",
-    cuisine: "",
-    photo: "",
-    ingredients: "",
-    preparation: "",
-  }
-  const [formData, setFormData] = useState({ ...initialFormState })
-  const handleChange = ({ target }) => {
-    setFormData({
-      ...formData,
-      [target.name]: target.value,
-    })
-  }
-
+  //handleSubmit construction: when submitted
   const handleSubmit = (event) => {
+    //prevent the default page refresh
     event.preventDefault()
-    createRecipe(formData)
-    setFormData({ ...initialFormState })
-    console.log(formData.photo)
+    //start a new FormData construct
+    const formData = new FormData(event.target)
+    //declare an empty data object
+    const data = {}
+    //for each key value pair in the formData entries
+    for (let [key, value] of formData.entries()) {
+      //add it to the data object
+      data[key] = value
+    }
+    //and run createRecipe in App.js
+    createRecipe(data)
   }
-  // TODO: When the form is submitted, a new recipe should be created, and the form contents cleared.
-  // TODO: Add the required input and textarea form elements.
-  // TODO: Add the required submit and change handlers
   
+  //structure for the form
   return (
     <form name="create" onSubmit={handleSubmit}>
       <table>
@@ -36,8 +29,6 @@ function RecipeCreate({ createRecipe }) {
                 name="name" 
                 type="text"
                 id="name"
-                onChange={handleChange}
-                value={formData.name}
                 required={true}
                 placeholder="Name"
               />
@@ -47,8 +38,6 @@ function RecipeCreate({ createRecipe }) {
                 name="cuisine" 
                 type="text"
                 id="cuisine"
-                onChange={handleChange}
-                value={formData.cuisine}  
                 required={true}
                 placeholder="Cuisine"
               />
@@ -58,8 +47,6 @@ function RecipeCreate({ createRecipe }) {
                 name="photo" 
                 type="text"
                 id="phone"
-                onChange={handleChange}
-                value={formData.photo}
                 placeholder="URL"
               />
             </td>
@@ -68,8 +55,6 @@ function RecipeCreate({ createRecipe }) {
                 name="ingredients" 
                 type="text"
                 id="ingredients"
-                onChange={handleChange}
-                value={formData.ingredients}
                 required={true}
                 rows={2}
                 placeholder="Ingredients"
@@ -80,8 +65,6 @@ function RecipeCreate({ createRecipe }) {
                 name="preparation"
                 type="text"
                 id="preparation"
-                onChange={handleChange}
-                value={formData.preparation}
                 required={true}
                 rows={2}
                 placeholder="Preparation"

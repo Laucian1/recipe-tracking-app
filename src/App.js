@@ -5,22 +5,25 @@ import RecipeList from "./RecipeList";
 import RecipeData from "./RecipeData"
 
 function App() {
+  //set a state for the recipes, using RecipeData.js as default
   const [recipes, setRecipes] = useState(RecipeData);
 
-  // TODO: Add the ability for the <RecipeList /> component to list and delete an existing recipe.
-  // TODO: Add the ability for the <RecipeCreate /> component to create new recipes.
-  const createRecipe = (newRecipe) =>
-    setRecipes((currentRecipes) => [
-      newRecipe,
-      ...currentRecipes,
-    ])
+  //set a createRecipe function that takes a new recipe
+  const createRecipe = (newRecipe) => {
+    //and appends it to the recipes state
+    setRecipes([...recipes, newRecipe])
+  }
 
+  //set a deleteRecipe function that takes a chosen index
   const deleteRecipe = (indexToDelete) =>
+    //compares it to the current recipes in the state
     setRecipes((currentRecipes) => 
+      //and filters out the recipes that do not match the index
       currentRecipes.filter((recipe, index) => 
         index !== indexToDelete)
     )
   
+  //structure for the page
   return (
     <div className="App">
       <header><h1>Delicious Food Recipes</h1></header>
